@@ -1,5 +1,6 @@
 package tns.T050400946.application.services;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,6 +68,13 @@ public class UserServiceImpl implements UserService {
 		    System.out.println("User with ID: " + id + " deleted successfully.");
 		    
 		    return user;
+	}
+
+	@Override
+	public List<User> getAllUsers() {
+		
+		
+		return repo.findAll();
 	}
 	
 	

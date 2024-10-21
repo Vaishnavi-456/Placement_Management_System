@@ -1,5 +1,6 @@
 package tns.T050400946.application.services;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +51,7 @@ public class StudentServiceImpl implements StudentService {
 	public Student searchStudentByHallTicket(long ticketNo) {
          try {
 			
-			return repo.findById(ticketNo).get();
+			return repo.findByHallTicketNo(ticketNo);
 			
 		 }catch(NoSuchElementException e) {
 			
@@ -87,6 +88,11 @@ public class StudentServiceImpl implements StudentService {
 		
 		
 		
+	}
+
+	@Override
+	public List<Student> getAllStudents() {
+		return repo.findAll();
 	}
 
 }

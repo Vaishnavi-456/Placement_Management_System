@@ -2,6 +2,7 @@ package tns.T050400946.application.controller;
 
 
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import tns.T050400946.application.entities.Certificate;
 import tns.T050400946.application.entities.Student;
+import tns.T050400946.application.entities.User;
 import tns.T050400946.application.services.StudentService;
 
 @RestController
@@ -29,6 +31,12 @@ public class StudentController {
 	void addStudent(@RequestBody Student student) {
 		service.addStudent(student);
 	}
+	
+	 @GetMapping("/students")
+	    public ResponseEntity<List<Student>> getAllUsers() {
+	        List<Student> students = service.getAllStudents();
+	        return ResponseEntity.ok(students);
+	    } 
 	
 	@GetMapping("/students/id/{id}")
 	ResponseEntity<Student> searchStudentById(@PathVariable long id) {
@@ -49,7 +57,7 @@ public class StudentController {
 	ResponseEntity<Student> searchStudentByHallTicket(@PathVariable long ticketNo) {
 		try
 		{
-			Student s=service.searchStudentById(ticketNo);
+			Student s=service.searchStudentByHallTicket(ticketNo);
 			return new ResponseEntity<>(s,HttpStatus.OK) ;
 		}
 		catch(NoSuchElementException e)

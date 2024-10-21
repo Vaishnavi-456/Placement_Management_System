@@ -1,5 +1,7 @@
 package tns.T050400946.application.services;
 
+import java.util.List;
+
 import tns.T050400946.application.entities.User;
 
 public interface UserService {
@@ -9,5 +11,6 @@ public interface UserService {
 	User login(User user);
 	boolean logOut();
 	User deleteUser(long id);
+	List<User> getAllUsers();
 
 }

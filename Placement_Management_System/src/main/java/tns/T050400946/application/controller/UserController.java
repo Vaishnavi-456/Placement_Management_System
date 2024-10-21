@@ -1,9 +1,12 @@
 package tns.T050400946.application.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -52,6 +55,12 @@ public class UserController {
                 ? new ResponseEntity<>("User logged out successfully", HttpStatus.OK)
                 : new ResponseEntity<>("No user is currently logged in", HttpStatus.BAD_REQUEST);
     }
+    
+    @GetMapping("/users")
+    public ResponseEntity<List<User>> getAllUsers() {
+        List<User> users = service.getAllUsers();
+        return ResponseEntity.ok(users);
+    } 
 
     // Delete user
     @DeleteMapping("/users/{id}")

@@ -6,6 +6,8 @@ import tns.T050400946.application.entities.Student;
 
 public interface StudentRepository extends JpaRepository<Student, Long> {
 	
+	Student findByHallTicketNo(long hallTicketNo);
+	
 	
 
 }

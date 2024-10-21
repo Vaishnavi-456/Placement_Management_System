@@ -1,5 +1,6 @@
 package tns.T050400946.application.services;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,6 +75,11 @@ public class CollegeServiceImpl implements CollegeService {
 		
 		
 		
+	}
+
+	@Override
+	public List<College> getAllColleges() {
+		return repo.findAll();
 	}
 
 }

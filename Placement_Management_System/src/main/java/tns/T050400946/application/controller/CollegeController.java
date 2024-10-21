@@ -1,5 +1,6 @@
 package tns.T050400946.application.controller;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import tns.T050400946.application.entities.College;
+import tns.T050400946.application.entities.Student;
 import tns.T050400946.application.services.CollegeService;
 
 @RestController
@@ -26,6 +28,12 @@ public class CollegeController {
 	void addCollege(@RequestBody College college) {
 		service.addCollege(college);
 	}
+	
+	@GetMapping("/colleges")
+    public ResponseEntity<List<College>> getAllColleges() {
+        List<College> colleges = service.getAllColleges();
+        return ResponseEntity.ok(colleges);
+    } 
 	
 	@GetMapping("/colleges/{college_id}")
 	ResponseEntity<College> searchCollege(@PathVariable long college_id) {
